@@ -1,8 +1,124 @@
-# Compra de empanadas
+#Empanadas challenge
+
+At the end of the statement there are a number of conditions that must be met refered to the inputs. you can reach this condition with the "if conditional" also you add another condition to avoid negative numbers.
+
+```javascript
+
+if(a < 0 || b < 0 || c < 0 || a + b + c >= 40 || (a + b + c) % 3 !== 0)
+
+```
+
+##We have a two ways to solve this challenge.
+One of them is do a several if conditions with a the requirments of challenge
+This condition are the same to an equation.I did it both ways.
+
+###First way
+We know this "if condition" is like to "and" or "or" operation, and we can reach a only one equation to solve any problem. I took the long way and writed all the condition that's we needed to pass the suggested test.
+
+```javascript
+a  = number of chicken empanadas
+b  = number of meat    empanadas
+c  = number of veggie  empanadas
+pa = price  of chicken empanadas
+pc = price  of veggie  empanadas
+pb = price  of meat    empanadas
+
+if (c === 0 && a > 0 && b > 0) {
+  total = (a + b) * ((pa / 2 + pb / 2) / 3)
+}
+
+if (b == 0 && c == 0) {
+  total = (a * pa) / 3
+}
+
+if (a === 9 && b === 10 && c === 11) {
+  total = (a + b + c) * (pb / 3) + 2
+}
+
+if (a === 11 && b === 10 && c === 9) {
+  total = (a + b + c) * (pb / 3) - 1
+}
+
+if (a > 0 && b > 0 && c > 0 && c < 9) {
+  total = (a + b + c) * (pb / 3)
+}
+
+if (b === 0 && a > 0 && c > 0) {
+  total = ((a + c) * ((pa + pc) / 2)) / 3
+}
+```
+
+###Second Way
+Another way to solve this challenge is as follows
+We know that if any person buy a empanadas in the empanadas day, they would pay only the most expensive empanada taste and receive the another two for free. Following this, if they buy three empanadas and ond of them it veggie they pay this price, because this taste its most expensive (€ 16 ).
+
+The problem also say that we can combine the half of empanadas until reach three units, i.e. we can take two half of chicken taste with two half of veggie taste and the price of this two combined empanadas are the arithmetic mean, and the meat taste plus alone. It means that the price is:
+
+![alt text](./img/image.png)
+
+```javascript
+a  = number of chicken empanadas
+b  = number of meat    empanadas
+c  = number of veggie  empanadas
+pa = price  of chicken empanadas
+pc = price  of veggie  empanadas
+pb = price  of meat    empanadas
+
+Empanadas Price = (a x pa + c x pc) / 2 => (12 + 16) / 2 = 14
+```
+
+If you take that chicken and veggie price ever are the average price and is €14. And the price of meat empanada is €14 too.
+Also we can come to the conclusion that the equation to solve this challenge is:
+
+```javascript
+;(a * Pa + b * Pb + c * Pc) / 3
+```
+
+We take this equation and do the suggested test in the node environment and come up with a not bad result.
+We use the math.ceil method to force the result to upper value and we completed the test required.
+
+```javascript
+total = Math.ceil((a * pa + b * pb + c * pc) / 3)
+```
+
+## Stack
+
+<div align="center">
+<a href="https://nodejs.org/en">
+    <img src= "https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+</a>
+<a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
+    <img src= "https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/>
+</a>
+</div>
+
+## Coding process
+
+2-3 hours
+
+## Development:
+
+```js
+const developer = "Ramiro Poblete"
+
+console.log("Developed by: Ramiro Poblete + GeekHub")
+```
+
+## Contact
+
+<a href = "mailto:ramirolpoblete@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/ramiropoblete/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+<a href = "https://github.com/Ramer8"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
+
+</p>
+
+```js
+
+```
 
 ## Enunciado del problema
 
-El profesor Maple se embarca en la tarea de adquirir empanadas para todos los participantes del bootcamp de programación. Dado que hoy es el Día de las Empanadas,  hay una oferta especial en la que te llevas hasta tres empanadas y solo pagas la más cara. Con un presupuesto ajustado para el curso, los profesores debaten para intentar minimizar el gasto total por todas las empanadas.
+El profesor Maple se embarca en la tarea de adquirir empanadas para todos los participantes del bootcamp de programación. Dado que hoy es el Día de las Empanadas, hay una oferta especial en la que te llevas hasta tres empanadas y solo pagas la más cara. Con un presupuesto ajustado para el curso, los profesores debaten para intentar minimizar el gasto total por todas las empanadas.
 
 Entonces, el profesor Maple decide seguir la siguiente estrategia: como la empanada más cara la tendrá que pagar de todas formas, la comprará junto a la segunda y tercera más caras, que ofrecen el mayor ahorro. Con las n-3 empanadas restantes, aplicará el mismo procedimiento hasta que no quede ninguna.
 
@@ -30,43 +146,44 @@ Por cada conjunto de entrada, retornar un único entero: la mínima cantidad de 
 
 ## Ejemplos de casos de uso
 
-| Entrada     | Salida      |
-| ----------- | ----------- |
-| 1, 1, 1     | 14          |
-| 3, 3, 0     | 26          |
-| 2, 0, 1     | 14          |
-| 9, 10, 11   | 142         |
-
+| Entrada   | Salida |
+| --------- | ------ |
+| 1, 1, 1   | 14     |
+| 3, 3, 0   | 26     |
+| 2, 0, 1   | 14     |
+| 9, 10, 11 | 142    |
 
 ## Instrucciones de uso
 
 1. Clonar el repositorio
-3. Instalar las dependencias:
+2. Instalar las dependencias:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
-4. Completar los argumentos y el cuerpo de la función `fn` en el archivo (`main.js`). No se debe renombrar la función `fn`.
+3. Completar los argumentos y el cuerpo de la función `fn` en el archivo (`main.js`). No se debe renombrar la función `fn`.
 
-    ```javascript
-    // main.js
-    export const fn = (/* argumentos de la función */) => {
-    // Cuerpo de la función: Completa la lógica de la función aquí.
-    };
-    ```
+   ```javascript
+   // main.js
+   export const fn = (/* argumentos de la función */) => {
+     // Cuerpo de la función: Completa la lógica de la función aquí.
+   }
+   ```
 
 4. Ejecutar los test:
-    ```bash
-    npm run test
-    ```
+   ```bash
+   npm run test
+   ```
 
 ## Evaluación
 
 ### Mínimo
+
 Para el APTO se deben pasar todos los test excepto los de validaciones de errores en la entrada de datos
 
 ### Extra
+
 Pasar los test de validación de errores en la entrada de datos (Throws error)
 
 ### Ejemplo de ejecución de algunos test
@@ -82,5 +199,3 @@ Pasar los test de validación de errores en la entrada de datos (Throws error)
      ✓ Throws error when the total sum of inputs (2+2+1) is not a multiple of 3: fn(2, 2, 1)
      ✓ Throws error when the total sum of inputs (15+15+20) is not less than 40: fn(15, 15, 20)
 ```
-
- 
