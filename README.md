@@ -8,9 +8,9 @@ if(a < 0 || b < 0 || c < 0 || a + b + c >= 40 || (a + b + c) % 3 !== 0)
 
 ```
 
-##We have a two ways to solve this challenge.
-One of them is do a several if conditions with a the requirments of challenge
-This condition are the same to an equation.I did it both ways.
+##We have several ways to solve this challenge.
+One is to make a series of "if conditions" with the challenge requirements.
+This condition is similar to getting a minimum equation. I did it both ways.
 
 ###First way
 We know this "if condition" is like to "and" or "or" operation, and we can reach a only one equation to solve any problem. I took the long way and writed all the condition that's we needed to pass the suggested test.
